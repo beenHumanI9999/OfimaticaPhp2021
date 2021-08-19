@@ -14,8 +14,8 @@ services:
     networks:
       docker_BD:
         ipv4_address: 172.31.0.3
-        docker_proyecto:
-          ipv4_address: 172.32.0.3
+      docker_proyecto:
+        ipv4_address: 172.32.0.3
 
     restart: always
   php:
