@@ -12,7 +12,11 @@ services:
     volumes:
       - ./database:/var/lib/mysql
     networks:
-      - OfimaticaFinalNetwork
+      docker_BD:
+        ipv4_address: 172.31.0.3
+        docker_proyecto:
+          ipv4_address: 172.32.0.3
+
     restart: always
   php:
     container_name: miservidor
@@ -22,10 +26,7 @@ services:
     links:
       - mysql
     networks:
-      - OfimaticaFinalNetwork
-networks:
-  OfimaticaFinalNetwork:
-    ipam:
-      driver: default
-      config:
-        - subnet: 172.40.0.0/16
+      docker_proyecto:
+        ipv4_address: 172.32.0.2
+
+
