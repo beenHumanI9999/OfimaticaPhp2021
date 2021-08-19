@@ -11,12 +11,6 @@ services:
       - 3306
     volumes:
       - ./database:/var/lib/mysql
-    networks:
-      docker_BD:
-        ipv4_address: 172.31.0.3
-      docker_proyecto:
-        ipv4_address: 172.32.0.3
-
     restart: always
   php:
     container_name: miservidor
@@ -25,8 +19,4 @@ services:
       - 9090:80
     links:
       - mysql
-    networks:
-      docker_proyecto:
-        ipv4_address: 172.32.0.2
-
 
