@@ -1,0 +1,29 @@
+version: '3.1'
+
+services:
+  mysql:
+    container_name: basedatos
+    image: unusuario182372/mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=123
+      - MYSQL_DATABASE=login
+    expose:
+      - 3306
+    networks:
+      - OfimaticaFinalNetwork
+    restart: always
+  php:
+    container_name: miservidor
+    image: unusuario182372/php:7.0-apache
+    ports:
+      - 9090:80
+    links:
+      - mysql
+    networks:
+      - OfimaticaFinalNetwork
+networks:
+  OfimaticaFinalNetwork:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.40.0.0/16
